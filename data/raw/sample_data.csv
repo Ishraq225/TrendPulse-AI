@@ -1,0 +1,32 @@
+$folders = @(
+    "data/raw",
+    "data/processed",
+    "notebooks",
+    "src",
+    "src/data",
+    "src/features",
+    "src/models",
+    "src/visualization",
+    "dashboard",
+    "reports",
+    "tests"
+)
+
+foreach ($folder in $folders) {
+    New-Item -ItemType Directory -Force -Path $folder
+}
+
+$files = @(
+    "app.py",
+    "src/__init__.py",
+    "src/data/__init__.py",
+    "src/features/__init__.py",
+    "src/models/__init__.py",
+    "src/visualization/__init__.py",
+    "README.md",
+    ".gitignore"
+)
+
+foreach ($file in $files) {
+    New-Item -ItemType File -Force -Path $file
+}
