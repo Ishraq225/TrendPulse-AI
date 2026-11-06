@@ -1,56 +1,70 @@
-# 📊 TrendPulse AI
-### Social Media Trend Intelligence & Sentiment Analysis Platform
+# TrendPulse AI
+### Social Media Trend Intelligence and Sentiment Analysis Platform
 
 TrendPulse AI is a Python-based data analytics platform designed to explore social media discussions, analyze audience sentiment, identify popular topics, and visualize discussion patterns over time.
 
-The project combines data collection, data preprocessing, sentiment analysis, and interactive visualization to transform raw social media text into meaningful insights.
+The project transforms raw social media data into structured, analysis-ready datasets through automated data collection and preprocessing. It aims to provide insights into audience sentiment, platform activity, and emerging discussion patterns.
 
-> **Project Status:** Phase 2 Completed | Phase 3: Exploratory Data Analysis (Upcoming)
+**Project Status:** Phase 2 Completed | Phase 3: Exploratory Data Analysis (In Progress)
 
 ---
 
-## 🎯 Project Objectives
+## Project Objectives
 
-- Collect and process publicly available social media datasets.
-- Clean and standardize raw text data.
-- Analyze positive, negative, and neutral sentiment.
-- Identify frequently discussed topics.
-- Explore platform-wise discussion patterns.
-- Visualize sentiment and topic trends over time.
-- Build an interactive analytics dashboard.
+- Collect publicly available social media datasets.
+- Build a reproducible data collection pipeline.
+- Clean and standardize raw social media records.
+- Perform sentiment analysis on social media posts.
+- Identify frequently discussed topics and keywords.
+- Explore platform-wise engagement and discussion patterns.
+- Analyze sentiment and topic trends over time.
+- Develop an interactive analytics dashboard.
 
-## ✨ Features
+## Current Features
 
-### 1. Data Collection
-- Download public datasets using the Hugging Face Datasets library.
-- Convert datasets into Pandas DataFrames.
-- Preserve original downloaded data in CSV format.
+### 1. Automated Data Collection
 
-### 2. Data Preprocessing
+- Download publicly available datasets using the Hugging Face Datasets library.
+- Convert downloaded datasets into Pandas DataFrames.
+- Save original records in CSV format.
+- Maintain separate raw and processed data directories.
+
+**Implementation:** `scripts/collect_data.py`
+
+### 2. Data Preprocessing Pipeline
+
 - Standardize column names.
 - Handle missing text and platform values.
 - Convert timestamps into datetime format.
 - Remove invalid records and duplicate posts.
 - Generate internal post identifiers.
-- Save cleaned data separately from raw data.
+- Export cleaned datasets separately from raw data.
+
+**Implementation:** `src/data/prepare_data.py`
 
 ### 3. Sentiment Analysis
-- Analyze text using VADER Sentiment Analysis.
-- Classify posts into:
-  - 😊 Positive
-  - 😞 Negative
-  - 😐 Neutral
+
+The initial dashboard uses VADER sentiment analysis to classify social media posts into three categories:
+
+- Positive
+- Negative
+- Neutral
 
 ### 4. Interactive Dashboard
+
+The project includes a Streamlit-based dashboard with features such as:
+
 - Total post statistics.
 - Sentiment distribution.
 - Topic popularity.
 - Sentiment trends over time.
 - Platform-wise analysis.
 - Interactive topic and platform filters.
-- Downloadable analyzed dataset.
+- Downloadable analyzed datasets.
 
-## 🛠️ Technology Stack
+---
+
+## Technology Stack
 
 | Technology | Purpose |
 |---|---|
@@ -61,9 +75,9 @@ The project combines data collection, data preprocessing, sentiment analysis, an
 | Plotly | Data visualization |
 | VADER | Sentiment analysis |
 | Hugging Face Datasets | Dataset collection |
-| Git & GitHub | Version control |
+| Git and GitHub | Version control |
 
-## 📂 Project Structure
+## Project Structure
 
 ```text
 TrendPulse-AI/
@@ -85,11 +99,8 @@ TrendPulse-AI/
 │       └── prepare_data.py
 │
 ├── notebooks/
-│
 ├── dashboard/
-│
 ├── reports/
-│
 ├── tests/
 │
 ├── app.py
@@ -98,13 +109,13 @@ TrendPulse-AI/
 └── .gitignore
 ```
 
-## 📊 Dataset Information
+## Dataset Information
 
-The initial real-world data pipeline uses a publicly available Hugging Face dataset:
+The current data collection pipeline uses a publicly available dataset hosted on Hugging Face.
 
 **Dataset:** [Hackathon Sentiment Analysis](https://huggingface.co/datasets/Tarakeshwaran/Hackathon_Sentiment_analysis)
 
-### Current Dataset Statistics
+### Dataset Statistics
 
 | Metric | Value |
 |---|---:|
@@ -122,13 +133,11 @@ The initial real-world data pipeline uses a publicly available Hugging Face data
 | Twitter | 235 |
 | Facebook | 223 |
 
-### Date Range
-
-May 15, 2010 – October 22, 2023
+**Dataset Date Range:** May 15, 2010 – October 22, 2023
 
 **Note:** The dataset contains historical records and is used for analytical and educational purposes. It does not represent live social media activity.
 
-## ⚙️ Installation & Setup
+## Installation and Setup
 
 ### Prerequisites
 
@@ -150,7 +159,7 @@ cd TrendPulse-AI
 python -m venv .venv
 ```
 
-Activate it on Windows PowerShell:
+Activate the environment on Windows PowerShell:
 
 ```powershell
 Set-ExecutionPolicy -Scope Process -ExecutionPolicy RemoteSigned
@@ -172,7 +181,7 @@ pip install -r requirements.txt
 python scripts/collect_data.py
 ```
 
-This downloads the dataset and saves the original records in:
+This script downloads the public dataset and saves the original records to:
 
 ```text
 data/raw/social_media_posts.csv
@@ -184,7 +193,7 @@ data/raw/social_media_posts.csv
 python -m src.data.prepare_data
 ```
 
-This cleans and standardizes the dataset and saves the output in:
+This command executes the preprocessing pipeline and saves the cleaned dataset to:
 
 ```text
 data/processed/social_media_posts.csv
@@ -202,64 +211,67 @@ Open the local URL displayed in your terminal, usually:
 http://localhost:8501
 ```
 
-## 🔍 Data Processing Workflow
+---
+
+## Data Processing Workflow
 
 ```text
 Public Hugging Face Dataset
-           |
-           v
-     Data Collection
-           |
-           v
-       Raw CSV File
-           |
-           v
-    Data Preprocessing
-           |
-           v
-   Cleaned Processed CSV
-           |
-           v
-    Sentiment Analysis
-           |
-           v
-   Interactive Dashboard
-           |
-           v
+          |
+          v
+    Data Collection
+          |
+          v
+      Raw CSV File
+          |
+          v
+   Data Preprocessing
+          |
+          v
+  Cleaned Processed CSV
+          |
+          v
+   Sentiment Analysis
+          |
+          v
+  Interactive Dashboard
+          |
+          v
      Visual Insights
 ```
 
-## 🗺️ Development Roadmap
+## Development Roadmap
 
 | Phase | Description | Status |
 |---|---|---|
-| Phase 1 | Dashboard MVP and initial sentiment analysis | ✅ Completed |
-| Phase 2 | Real-world dataset collection and preprocessing | ✅ Completed |
-| Phase 3 | Exploratory Data Analysis (EDA) | 🔄 Upcoming |
-| Phase 4 | Advanced NLP and sentiment analysis | ⏳ Planned |
-| Phase 5 | Topic modeling and trend intelligence | ⏳ Planned |
-| Phase 6 | Advanced dashboard and deployment | ⏳ Planned |
+| Phase 1 | Dashboard MVP and initial sentiment analysis | Completed |
+| Phase 2 | Real-world dataset collection and preprocessing | Completed |
+| Phase 3 | Exploratory Data Analysis (EDA) | In Progress |
+| Phase 4 | Advanced NLP and sentiment analysis | Planned |
+| Phase 5 | Topic modeling and trend intelligence | Planned |
+| Phase 6 | Advanced dashboard and deployment | Planned |
 
 ### Planned Improvements
 
+- Exploratory data analysis and statistical summaries.
 - Advanced sentiment analysis using Transformer models.
-- Topic extraction and topic modeling with BERTopic.
+- Topic extraction and topic modeling using BERTopic.
 - Keyword frequency and hashtag analysis.
 - Emerging topic detection.
 - Time-based trend identification.
-- Improved data quality and automated validation.
+- Automated data quality validation.
 - Database integration using PostgreSQL.
 - Cloud deployment.
 
-## ⚠️ Limitations
+## Limitations
 
 - Current analysis uses a historical public dataset.
-- VADER is a baseline sentiment analysis tool and may not understand sarcasm, context, or complex language.
+- VADER is a baseline sentiment analysis tool and may not accurately understand sarcasm, context, or complex language.
 - Hashtags are currently used as topic proxies where available.
 - The application does not currently collect live social media posts.
 - Identified patterns should not be interpreted as real-time public opinion.
 
-## 👩‍💻 Author
+## Author
 
 **Ishraq Sajid**
 
@@ -271,7 +283,7 @@ Bahria University, Karachi
 
 ---
 
-⭐ If you find this project interesting, consider giving the repository a star!
+If you find this project interesting, consider giving the repository a star.
 
 *Built as a hands-on Artificial Intelligence and Data Science portfolio project.*
 
